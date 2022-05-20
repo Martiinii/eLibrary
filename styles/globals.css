@@ -11,9 +11,7 @@
 }
 
 @layer components {
-    .link {
-        @apply reset-focus bg-slate-200 hover:bg-slate-300 btn-rounded
-    }
+
 }
 
 @layer utilities {
