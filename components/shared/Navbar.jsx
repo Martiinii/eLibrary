@@ -33,7 +33,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="w-full flex px-5 py-5 bg-white/30 backdrop-blur-sm flex-wrap justify-end sticky top-0">
+        <nav className="w-full flex px-5 py-5 bg-white/30 backdrop-blur-sm flex-wrap justify-end sticky top-0 z-50">
             <button className="md:hidden reset-focus btn-padding btn-rounded" onClick={toggleMenu}>
                 <FontAwesomeIcon icon={faBars} />
             </button>
