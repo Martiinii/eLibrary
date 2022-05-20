@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+@layer base {
+    body {
+        @apply bg-zinc-100 text-slate-900;
+    }
+}
+
+@layer components {
+    .link {
+        @apply reset-focus bg-slate-200 hover:bg-slate-300
+    }
+}
+
+@layer utilities {
+    .reset-focus {
+        @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:ring-yellow-400 btn-padding rounded-lg transition;
+    }
+
+    .btn-padding {
+        @apply px-2 py-1 md:px-3 md:py-2
+    }
+}
