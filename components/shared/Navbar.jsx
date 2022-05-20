@@ -17,7 +17,7 @@ const navbarRight = [
 const NavbarLink = ({ children, href }) => {
     return (
         <Link href={href}>
-            <a className="reset-focus btn-padding btn-rounded">{children}</a>
+            <a className="reset-focus btn-padding btn-rounded bg-slate-100 hover:bg-slate-200">{children}</a>
         </Link>
     )
 }
