@@ -20,7 +20,7 @@
     }
 
     .btn-padding {
-        @apply px-2 py-1 md:px-3 md:py-2
+        @apply px-3 py-2
     }
 
     .btn-rounded {
