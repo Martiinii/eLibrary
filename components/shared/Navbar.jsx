@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/Link"
 import { useState } from "react"
 import TextInput from "./TextInput"
+import useTextInput from "./useTextInput"
 
 const navbarLeft = [
     { title: "O projekcie", href: "/about" }
@@ -24,8 +25,12 @@ const NavbarLink = ({ children, href }) => {
 
 const Navbar = () => {
     const [mobileMenuVisible, setMobileMenuVisible] = useState(false)
-
     const toggleMenu = () => setMobileMenuVisible(!mobileMenuVisible)
+    const [searchInput, searchInputValue] = useTextInput("md:text-center", "Wyszukaj książki");
+
+    const submitSearch = e => {
+        e.preventDefault();
+    }
 
     return (
         <nav className="w-full flex px-5 py-5 bg-white/30 backdrop-blur-sm flex-wrap justify-end sticky top-0">
@@ -40,7 +45,9 @@ const Navbar = () => {
 
 
                 <section className="order-first md:order-none">
-                    <TextInput placeholder="Wyszukaj książki" className="md:text-center" />
+                    <form onSubmit={submitSearch}>
+                        {searchInput}
+                    </form>
                 </section>
 
 
