@@ -16,7 +16,7 @@
 
 @layer utilities {
     .reset-focus {
-        @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:ring-sky-600 btn-padding transition;
+        @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:ring-indigo-500 btn-padding transition;
     }
 
     .btn-padding {
