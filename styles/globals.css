@@ -12,16 +12,20 @@
 
 @layer components {
     .link {
-        @apply reset-focus bg-slate-200 hover:bg-slate-300
+        @apply reset-focus bg-slate-200 hover:bg-slate-300 btn-rounded
     }
 }
 
 @layer utilities {
     .reset-focus {
-        @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:ring-yellow-400 btn-padding rounded-lg transition;
+        @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:ring-sky-600 btn-padding transition;
     }
 
     .btn-padding {
         @apply px-2 py-1 md:px-3 md:py-2
+    }
+
+    .btn-rounded {
+        @apply rounded-lg
     }
 }
