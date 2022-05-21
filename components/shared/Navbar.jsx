@@ -2,11 +2,10 @@ import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/Link"
 import { useState } from "react"
-import TextInput from "./TextInput"
 import useTextInput from "./useTextInput"
 
 const navbarLeft = [
-    { title: "O projekcie", href: "/about" }
+    { title: "Ulubione książki", href: "/favourite" }
 ]
 
 const navbarRight = [
