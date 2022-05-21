@@ -41,7 +41,7 @@ const Book = ({ id, title, agents, languageCode, resources }) => {
     const imgSrc = useMemo(() => getImage(resources));
 
     return (
-        <BookProvider id={id}>
+        <BookProvider id={id} title={title} agents={agents} languageCode={languageCode} resources={resources} >
             <article className="w-min bg-white rounded-xl shadow-md mx-auto mb-auto">
                 <header className="relative w-[300px] h-[400px] bg-slate-100 overflow-hidden rounded-xl">
                     <img src={imgSrc} alt="Book cover" className="object-cover h-full w-full object-top brightness-95 origin-top hover:scale-[1.02] transition" />

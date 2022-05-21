@@ -3,7 +3,7 @@ import { useStarred } from "../../context/starredContext";
 
 const BookContext = createContext()
 
-const BookProvider = ({ children, id }) => {
+const BookProvider = ({ children, id, title, agents, languageCode, resources }) => {
     const { ready, isStarred: checkStarred, addStarred, removeStarred } = useStarred();
     const [starredState, setStarredState] = useState(false);
     // For optimalization
@@ -14,7 +14,7 @@ const BookProvider = ({ children, id }) => {
         setStarredState(state);
         
         if (state) {
-            addStarred(id)
+            addStarred(id, {id, title, agents, languageCode, resources})
         } else {
             removeStarred(id)
         }
@@ -31,7 +31,7 @@ const BookProvider = ({ children, id }) => {
     }, [initialCheck, ready, checkStarred, id])
 
 
-    const value = { ready, starredState, setStarred }
+    const value = { ready, starredState, setStarred, id, title, agents, languageCode, resources }
 
     return (
         <BookContext.Provider
