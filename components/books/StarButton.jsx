@@ -12,9 +12,8 @@ const StarButton = () => {
     }
 
     return (
-        <button className="absolute top-2 right-2 reset-focus rounded-full" onClick={toggleStarred}>
-            <div className="fa-layers text-4xl block m-1">
-                <FontAwesomeIcon icon={faCircle} className="text-white w-fit" />
+        <button className="absolute top-2 right-2 reset-focus rounded-full bg-white/90 backdrop-blur-sm shadow-md shadow-slate-800/40" onClick={toggleStarred}>
+            <div className="fa-layers text-4xl block m-0">
                 <FontAwesomeIcon icon={starredState ? wholeStar : emptyStar} className="text-xl text-yellow-400" />
             </div>
         </button>
