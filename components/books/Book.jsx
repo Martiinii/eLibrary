@@ -5,8 +5,45 @@ import BookField from "./BookField";
 import StarButton from "./StarButton";
 import convertCodeToLang from "../shared/languages";
 
-const Book = ({ id, title, author, languageCode, imgSrc }) => {
-    const language = useMemo(() => convertCodeToLang(languageCode))
+const takeResources = resources => {
+    let img = "";
+    let html = ""
+
+    resources.forEach(res => {
+        if (res.type == "text/html") {
+            html = res.uri;
+            return;
+        }
+
+        if (res.uri.endsWith("medium.jpg")) {
+            img = res.uri
+        }
+    });
+
+    return { img, html }
+}
+
+const getAuthor = agents => {
+    let author = "Nieznany";
+
+    agents.some(agent => {
+        if (agent.type == "Author") {
+            const [lastName, firstName] = agent.person.split(", ");
+            author = `${firstName} ${lastName}`;
+            return true;
+        }
+
+        return false;
+    })
+
+    return author;
+}
+
+
+const Book = ({ id, title, agents, languageCode, resources }) => {
+    const language = useMemo(() => convertCodeToLang(languageCode));
+    const author = useMemo(() => getAuthor(agents));
+    const { img: imgSrc, html: htmlText } = useMemo(() => takeResources(resources));
 
     return (
         <BookProvider id={id}>
