@@ -1,6 +1,6 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import Link from "next/Link"
+import Link from "next/link"
 import { useState } from "react"
 import useTextInput from "./useTextInput"
 
