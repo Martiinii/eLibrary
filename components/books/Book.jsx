@@ -5,22 +5,16 @@ import BookField from "./BookField";
 import StarButton from "./StarButton";
 import convertCodeToLang from "../shared/languages";
 
-const takeResources = resources => {
+const getImage = resources => {
     let img = "";
-    let html = ""
 
     resources.forEach(res => {
-        if (res.type == "text/html") {
-            html = res.uri;
-            return;
-        }
-
         if (res.uri.endsWith("medium.jpg")) {
             img = res.uri
         }
     });
 
-    return { img, html }
+    return img
 }
 
 const getAuthor = agents => {
@@ -29,7 +23,7 @@ const getAuthor = agents => {
     agents.some(agent => {
         if (agent.type == "Author") {
             const [lastName, firstName] = agent.person.split(", ");
-            author = `${firstName} ${lastName}`;
+            author = `${firstName ?? ""} ${lastName}`.trim();
             return true;
         }
 
@@ -43,7 +37,7 @@ const getAuthor = agents => {
 const Book = ({ id, title, agents, languageCode, resources }) => {
     const language = useMemo(() => convertCodeToLang(languageCode));
     const author = useMemo(() => getAuthor(agents));
-    const { img: imgSrc, html: htmlText } = useMemo(() => takeResources(resources));
+    const imgSrc = useMemo(() => getImage(resources));
 
     return (
         <BookProvider id={id}>
@@ -55,7 +49,7 @@ const Book = ({ id, title, agents, languageCode, resources }) => {
 
                 <section className="p-4 text-center">
                     <header className="text-center my-3">
-                        <h2 className="text-lg font-semibold">{title}</h2>
+                        <h2 className="text-lg font-bold">{title}</h2>
                     </header>
 
                     <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-left">
