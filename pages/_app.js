@@ -4,11 +4,11 @@ import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }) {
   return (
-    <StarredProvider>
-      <Template>
+    <Template>
+      <StarredProvider>
         <Component {...pageProps} />
-      </Template>
-    </StarredProvider>
+      </StarredProvider>
+    </Template>
   )
 }
 
