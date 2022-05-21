@@ -5,18 +5,19 @@ import { useState } from "react"
 import useTextInput from "./useTextInput"
 
 const navbarLeft = [
+    { title: "Popularne", href: "/" },
     { title: "Ulubione książki", href: "/favourite" }
 ]
 
 const navbarRight = [
-    { title: "O projekcie", href: "/about" }
+    { title: "O projekcie", href: "/about" },
 ]
 
 
 const NavbarLink = ({ children, href }) => {
     return (
         <Link href={href}>
-            <a className="reset-focus btn-padding btn-rounded bg-slate-100 hover:bg-slate-200">{children}</a>
+            <a className="reset-focus btn-padding btn-rounded bg-slate-100 hover:bg-slate-200 border-2 border-slate-400 focus-visible:border-transparent whitespace-nowrap w-fit">{children}</a>
         </Link>
     )
 }
@@ -25,7 +26,7 @@ const NavbarLink = ({ children, href }) => {
 const Navbar = () => {
     const [mobileMenuVisible, setMobileMenuVisible] = useState(false)
     const toggleMenu = () => setMobileMenuVisible(!mobileMenuVisible)
-    const [searchInput, searchInputValue] = useTextInput({ className: "md:text-center", placeholder: "Wyszukaj książki" });
+    const [searchInput, searchInputValue] = useTextInput({ className: "md:text-center border-2 border-indigo-400 focus-visible:border-transparent", placeholder: "Wyszukaj książki" });
 
     const submitSearch = e => {
         e.preventDefault();
@@ -47,12 +48,12 @@ const Navbar = () => {
                         </form>
                     </section>
 
-                    <section className="md:flex-1 md:text-right md:order-first">
+                    <section className="md:flex-1 md:order-first flex gap-5 md:gap-3 flex-col md:flex-row md:flex-wrap md:justify-end">
                         {navbarLeft.map((link, i) => <NavbarLink href={link.href} key={i}>{link.title}</NavbarLink>)}
                     </section>
 
 
-                    <section className="md:flex-1">
+                    <section className="md:flex-1 flex gap-5 md:gap-3 flex-col md:flex-row md:flex-wrap">
                         {navbarRight.map((link, i) => <NavbarLink href={link.href} key={i}>{link.title}</NavbarLink>)}
                     </section>
                 </div>
