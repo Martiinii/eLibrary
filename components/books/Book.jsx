@@ -4,6 +4,7 @@ import { BookProvider } from "./bookContext";
 import BookField from "./BookField";
 import StarButton from "./StarButton";
 import convertCodeToLang from "../shared/languages";
+import Link from "next/link";
 
 const getImage = resources => {
     let img = "";
@@ -57,9 +58,12 @@ const Book = ({ id, title, agents, languageCode, resources }) => {
                         <BookField icon={faLanguage}>{language}</BookField>
                     </div>
 
-                    <button className="reset-focus btn-padding btn-rounded my-5 bg-emerald-300 hover:bg-emerald-400 focus-visible:ring-emerald-700 uppercase font-semibold">
-                        Czytaj
-                    </button>
+                    <Link href={`read/${id}`}>
+                        <a className="inline-block reset-focus btn-padding btn-rounded my-5 bg-emerald-300 hover:bg-emerald-400 focus-visible:ring-emerald-700 uppercase font-semibold">
+                            Czytaj
+                        </a>
+                    </Link>
+
                 </section>
             </article>
         </BookProvider>
