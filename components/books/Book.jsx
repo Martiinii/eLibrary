@@ -1,4 +1,4 @@
-import { faCalendarDays, faLanguage, faUser } from "@fortawesome/free-solid-svg-icons";
+import { faLanguage, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useMemo } from "react";
 import { BookProvider } from "./bookContext";
 import BookField from "./BookField";
@@ -47,9 +47,9 @@ const Book = ({ id, title, agents, languageCode, resources }) => {
 
     return (
         <BookProvider id={id}>
-            <article className="w-min bg-white rounded-xl shadow-md place-self-center">
+            <article className="w-min bg-white rounded-xl shadow-md mx-auto mb-auto">
                 <header className="relative w-[300px] h-[400px] bg-slate-100 overflow-hidden rounded-xl">
-                    <img src={imgSrc} alt="Book cover" className="object-cover h-full w-full object-topbrightness-95 origin-top hover:scale-105 transition" />
+                    <img src={imgSrc} alt="Book cover" className="object-cover h-full w-full object-top brightness-95 origin-top hover:scale-105 transition" />
                     <StarButton />
                 </header>
 
