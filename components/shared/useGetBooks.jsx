@@ -5,7 +5,7 @@ import Book from "../books/Book";
 import BookSkeleton from "../books/BookSkeleton";
 import fetcher from "../shared/fetcher"
 
-const useGetBooks = (api = "https://gnikdroy.pythonanywhere.com/api/book/?format=json") => {
+const useGetBooks = (api = "https://gnikdroy.pythonanywhere.com/api/book/?format=json&type=Text") => {
     const { data: initialLoad, error } = useSWR(api, fetcher)
     const [nextFetch, setNextFetch] = useState(initialLoad?.next)
 
@@ -51,7 +51,6 @@ const useGetBooks = (api = "https://gnikdroy.pythonanywhere.com/api/book/?format
                         }
                     >
                         {books.map(book => {
-                           if( book.type != "Text") return null;
                             return (
                                 <Book
                                     key={book.id}
