@@ -58,7 +58,7 @@ const Book = ({ id, title, agents, languageCode, resources }) => {
                         <BookField icon={faLanguage}>{language}</BookField>
                     </div>
 
-                    <Link href={`read/${id}`}>
+                    <Link href={`/read/${id}`}>
                         <a className="inline-block reset-focus btn-padding btn-rounded my-5 bg-emerald-300 hover:bg-emerald-400 focus-visible:ring-emerald-700 uppercase font-semibold">
                             Czytaj
                         </a>
