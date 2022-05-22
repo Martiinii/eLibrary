@@ -1,6 +1,7 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
+import Router from "next/router"
 import { useState } from "react"
 import useTextInput from "./useTextInput"
 
@@ -30,6 +31,8 @@ const Navbar = () => {
 
     const submitSearch = e => {
         e.preventDefault();
+
+        searchInputValue ? Router.push(`/search/${encodeURIComponent(searchInputValue)}`) : Router.push("/");
     }
 
     return (
