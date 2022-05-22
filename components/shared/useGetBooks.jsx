@@ -51,6 +51,7 @@ const useGetBooks = (api = "https://gnikdroy.pythonanywhere.com/api/book/?format
                         }
                     >
                         {books.map(book => {
+                           if( book.type != "Text") return null;
                             return (
                                 <Book
                                     key={book.id}
