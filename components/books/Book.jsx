@@ -4,23 +4,18 @@ import { BookProvider } from "./bookContext";
 import BookField from "./BookField";
 import StarButton from "./StarButton";
 import convertCodeToLang from "../shared/languages";
+import Link from "next/link";
 
-const takeResources = resources => {
+const getImage = resources => {
     let img = "";
-    let html = ""
 
     resources.forEach(res => {
-        if (res.type == "text/html") {
-            html = res.uri;
-            return;
-        }
-
         if (res.uri.endsWith("medium.jpg")) {
             img = res.uri
         }
     });
 
-    return { img, html }
+    return img
 }
 
 const getAuthor = agents => {
@@ -29,7 +24,7 @@ const getAuthor = agents => {
     agents.some(agent => {
         if (agent.type == "Author") {
             const [lastName, firstName] = agent.person.split(", ");
-            author = `${firstName} ${lastName}`;
+            author = `${firstName ?? ""} ${lastName}`.trim();
             return true;
         }
 
@@ -43,10 +38,10 @@ const getAuthor = agents => {
 const Book = ({ id, title, agents, languageCode, resources }) => {
     const language = useMemo(() => convertCodeToLang(languageCode));
     const author = useMemo(() => getAuthor(agents));
-    const { img: imgSrc, html: htmlText } = useMemo(() => takeResources(resources));
+    const imgSrc = useMemo(() => getImage(resources));
 
     return (
-        <BookProvider id={id}>
+        <BookProvider id={id} title={title} agents={agents} languageCode={languageCode} resources={resources} >
             <article className="w-min bg-white rounded-xl shadow-md mx-auto mb-auto">
                 <header className="relative w-[300px] h-[400px] bg-slate-100 overflow-hidden rounded-xl">
                     <img src={imgSrc} alt="Book cover" className="object-cover h-full w-full object-top brightness-95 origin-top hover:scale-[1.02] transition" />
@@ -55,7 +50,7 @@ const Book = ({ id, title, agents, languageCode, resources }) => {
 
                 <section className="p-4 text-center">
                     <header className="text-center my-3">
-                        <h2 className="text-lg font-semibold">{title}</h2>
+                        <h2 className="text-lg font-bold">{title}</h2>
                     </header>
 
                     <div className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-3 text-left">
@@ -63,9 +58,12 @@ const Book = ({ id, title, agents, languageCode, resources }) => {
                         <BookField icon={faLanguage}>{language}</BookField>
                     </div>
 
-                    <button className="reset-focus btn-padding btn-rounded my-5 bg-emerald-300 hover:bg-emerald-400 focus-visible:ring-emerald-700 uppercase font-semibold">
-                        Czytaj
-                    </button>
+                    <Link href={`read/${id}`}>
+                        <a className="inline-block reset-focus btn-padding btn-rounded my-5 bg-emerald-300 hover:bg-emerald-400 focus-visible:ring-emerald-700 uppercase font-semibold">
+                            Czytaj
+                        </a>
+                    </Link>
+
                 </section>
             </article>
         </BookProvider>

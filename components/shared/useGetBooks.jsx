@@ -3,8 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import useSWR from "swr";
 import Book from "../books/Book";
 import BookSkeleton from "../books/BookSkeleton";
-
-const fetcher = (...args) => fetch(...args).then(res => res.json());
+import fetcher from "../shared/fetcher"
 
 const useGetBooks = (api = "https://gnikdroy.pythonanywhere.com/api/book/?format=json") => {
     const { data: initialLoad, error } = useSWR(api, fetcher)
@@ -25,14 +24,13 @@ const useGetBooks = (api = "https://gnikdroy.pythonanywhere.com/api/book/?format
         setBooks(books.concat(data.results));
     }
 
-
     return (
         <>
             {
                 (!books)
                     ?
                     // If initial books are still loading
-                    <div className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10">
+                    <div className="book-list">
                         {[...Array(5)].map((e, i) => {
                             return <BookSkeleton key={i} />
                         })}
@@ -41,7 +39,7 @@ const useGetBooks = (api = "https://gnikdroy.pythonanywhere.com/api/book/?format
                     :
                     // If initial books have loaded
                     <InfiniteScroll
-                        className="grid w-full grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5 gap-y-10 pb-5"
+                        className="book-list pb-5"
                         dataLength={books.length}
                         next={fetchMore}
                         hasMore={nextFetch != null}
