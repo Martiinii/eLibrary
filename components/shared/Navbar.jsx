@@ -15,10 +15,10 @@ const navbarRight = [
 ]
 
 
-const NavbarLink = ({ children, href }) => {
+const NavbarLink = ({ children, href, onClick }) => {
     return (
         <Link href={href}>
-            <a className="reset-focus btn-padding btn-rounded bg-slate-100 hover:bg-slate-200 border-2 border-slate-400 focus-visible:border-transparent whitespace-nowrap w-fit">{children}</a>
+            <a className="reset-focus btn-padding btn-rounded bg-slate-100 hover:bg-slate-200 border-2 border-slate-400 focus-visible:border-transparent whitespace-nowrap w-fit" onClick={onClick}>{children}</a>
         </Link>
     )
 }
@@ -26,12 +26,13 @@ const NavbarLink = ({ children, href }) => {
 
 const Navbar = () => {
     const [mobileMenuVisible, setMobileMenuVisible] = useState(false)
-    const toggleMenu = () => setMobileMenuVisible(!mobileMenuVisible)
     const [searchInput, searchInputValue] = useTextInput({ className: "md:text-center border-2 border-indigo-400 focus-visible:border-transparent", placeholder: "Wyszukaj książki" });
+
+    const toggleMenu = (state = null) => setMobileMenuVisible(state ?? !mobileMenuVisible)
 
     const submitSearch = e => {
         e.preventDefault();
-
+        toggleMenu(false);
         searchInputValue ? Router.push(`/search/${encodeURIComponent(searchInputValue)}`) : Router.push("/");
     }
 
@@ -40,7 +41,7 @@ const Navbar = () => {
             <h1 className="hidden md:block bg-white/80 backdrop-blur-sm text-2xl font-bold text-center py-5">E-Biblioteka</h1>
             <nav className="w-full flex px-5 py-5 bg-white/80 backdrop-blur-sm flex-wrap justify-between items-center sticky top-0 z-50">
                 <h2 className="block md:hidden text-xl font-bold">E-Biblioteka</h2>
-                <button className="md:hidden reset-focus btn-padding btn-rounded" onClick={toggleMenu}>
+                <button className="md:hidden reset-focus btn-padding btn-rounded" onClick={() => toggleMenu()}>
                     <FontAwesomeIcon icon={faBars} />
                 </button>
 
@@ -52,12 +53,12 @@ const Navbar = () => {
                     </section>
 
                     <section className="md:flex-1 md:order-first flex gap-5 md:gap-3 flex-col md:flex-row md:flex-wrap md:justify-end">
-                        {navbarLeft.map((link, i) => <NavbarLink href={link.href} key={i}>{link.title}</NavbarLink>)}
+                        {navbarLeft.map((link, i) => <NavbarLink href={link.href} key={i} onClick={() => {toggleMenu(false)}}>{link.title}</NavbarLink>)}
                     </section>
 
 
                     <section className="md:flex-1 flex gap-5 md:gap-3 flex-col md:flex-row md:flex-wrap">
-                        {navbarRight.map((link, i) => <NavbarLink href={link.href} key={i}>{link.title}</NavbarLink>)}
+                        {navbarRight.map((link, i) => <NavbarLink href={link.href} key={i} onClick={() => {toggleMenu(false)}}>{link.title}</NavbarLink>)}
                     </section>
                 </div>
             </nav>
