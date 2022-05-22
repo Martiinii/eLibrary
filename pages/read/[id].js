@@ -1,20 +1,15 @@
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-
 
 const ReadPage = () => {
     const router = useRouter();
     const { id } = router.query
-    const [loading, setLoading] = useState(true);
-
-    if(!id && loading) return <p>Ładowanie</p>;
-
-    const handleLoaded = () => {
-        setLoading(false);
-    }
+    if (!id) return;
 
     return (
-        <iframe onLoad={handleLoaded} src={`/api/text/${id}`} className="bg-white w-full h-full" height="100%" width="100%" />
+        <iframe
+            src={`https://www.gutenberg.org/files/${id}/${id}-h/${id}-h.htm`}
+            className="w-full min-h-[600px] md:min-h-[700px] bg-white rounded-lg shadow-lg"
+        />
     )
 }
 
