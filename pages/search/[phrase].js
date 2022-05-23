@@ -7,9 +7,6 @@ const SearchPage = () => {
 
     return (
         <>
-            <div>
-                Filtry
-            </div>
             {useGetBooks(`search=${phrase}`)}
         </>
     )
