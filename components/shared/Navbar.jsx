@@ -1,10 +1,8 @@
 import { faBars } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
-import Router from "next/router"
 import { useState } from "react"
 import { useSearch } from "../../context/searchContext"
-import useTextInput from "./useTextInput"
 
 const navbarLinks = [
     { title: "Popularne", href: "/" },
@@ -12,15 +10,13 @@ const navbarLinks = [
     { title: "O projekcie", href: "/about" },
 ]
 
-
 const NavbarLink = ({ children, href, onClick }) => {
     return (
         <Link href={href}>
-            <a className="reset-focus btn-padding btn-rounded bg-slate-100 hover:bg-slate-200 border-2 border-slate-400 focus-visible:border-transparent whitespace-nowrap w-fit" onClick={onClick}>{children}</a>
+            <a className="reset-focus btn-padding btn-rounded bg-slate-100 hover:bg-slate-200 whitespace-nowrap w-fit" onClick={onClick}>{children}</a>
         </Link>
     )
 }
-
 
 const Navbar = () => {
     const [mobileMenuVisible, setMobileMenuVisible] = useState(false)
@@ -29,7 +25,7 @@ const Navbar = () => {
 
     return (
         <>
-            <nav className="w-full bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+            <nav className="w-full bg-white/80 backdrop-blur-xl sticky top-0 z-40">
                 <div className="container mx-auto flex flex-wrap px-5 py-5 justify-between items-center gap-3">
                     <h1 className="text-2xl font-bold">E-Biblioteka</h1>
                     <button className="md:hidden reset-focus btn-padding btn-rounded" onClick={() => toggleMenu()}>
