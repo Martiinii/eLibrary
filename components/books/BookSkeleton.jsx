@@ -1,6 +1,6 @@
 const BookSkeleton = () => {
     return (
-        <div className="w-min bg-slate-10 rounded-xl shadow-md mx-auto mb-auto">
+        <div className="w-min bg-slate-10 rounded-xl shadow-md">
             <div className="animate-pulse">
                 <div className="w-[300px] h-[400px] bg-slate-300 rounded-xl" />
 
