@@ -33,13 +33,18 @@ const SearchProvider = ({ children }) => {
         setVisibleFilters(false);
     }
 
+    const searchSubmit = e => {
+        e.preventDefault();
+        Router.push(`/search?q=${encode(searchInputValue)}`);
+    }
+
     const filterModalElement = (
         <form className="flex flex-col gap-8" action="/search" onSubmit={formSubmit}>
             <fieldset>
                 <label>Tytuł</label>
                 {searchInput}
             </fieldset>
-<hr />
+            <hr />
             <fieldset>
                 <label>Autor</label>
                 {authorInput}
@@ -62,8 +67,9 @@ const SearchProvider = ({ children }) => {
 
     const searchBox = (
         <div className="flex w-full p-5 justify-center items-center gap-2">
-            {searchInput}
-
+            <form onSubmit={searchSubmit}>
+                {searchInput}
+            </form>
             <button className="reset-focus btn-padding btn-rounded bg-blue-500 hover:bg-blue-600 focus-visible:ring-blue-800 text-white" onClick={() => { setVisibleFilters(true) }}>
                 <FontAwesomeIcon icon={faFilter} />
             </button>
