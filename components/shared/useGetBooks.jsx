@@ -56,7 +56,7 @@ const useGetBooks = (params = "", api = "https://gnikdroy.pythonanywhere.com/api
                                     key={book.id}
                                     id={book.id}
                                     title={book.title}
-                                    languageCode={book.languages[0]}
+                                    languageCode={book.languages}
 
                                     agents={book.agents}
                                     resources={book.resources}
