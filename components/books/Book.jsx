@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { BookProvider } from "./bookContext";
 import BookField from "./BookField";
 import StarButton from "./StarButton";
-import convertCodeToLang from "../shared/languages";
+import { convertCodeToLang } from "../shared/languages";
 import Link from "next/link";
 
 const getImage = resources => {
@@ -36,9 +36,9 @@ const getAuthor = agents => {
 
 
 const Book = ({ id, title, agents, languageCode, resources }) => {
-    const language = useMemo(() => convertCodeToLang(languageCode));
-    const author = useMemo(() => getAuthor(agents));
-    const imgSrc = useMemo(() => getImage(resources));
+    const language = useMemo(() => (languageCode.map(code => convertCodeToLang(code)).filter(e => e != null).join(", ")), [languageCode]);
+    const author = useMemo(() => getAuthor(agents), [agents]);
+    const imgSrc = useMemo(() => getImage(resources), [resources]);
 
     return (
         <BookProvider id={id} title={title} agents={agents} languageCode={languageCode} resources={resources} >
