@@ -10,7 +10,7 @@
     }
 
     * ::-webkit-scrollbar-track {
-        @apply bg-neutral-400;
+        @apply bg-neutral-200;
     }
 
     * ::-webkit-scrollbar-track:horizontal {
@@ -18,11 +18,19 @@
     }
 
     * ::-webkit-scrollbar-thumb {
-        @apply bg-neutral-200 hover:bg-neutral-50 rounded-full border-4 border-solid border-transparent bg-clip-content;
+        @apply bg-neutral-400 hover:bg-neutral-500 rounded-full border-4 border-solid border-transparent bg-clip-content;
     }
 
     body {
         @apply bg-zinc-100;
+    }
+
+    fieldset {
+        @apply relative;
+    }
+
+    fieldset > label {
+        @apply absolute top-0 -translate-y-2/3 bg-white left-2 px-1 z-10 font-light text-sm text-slate-500;
     }
 }
 
@@ -30,11 +38,16 @@
     .book-list {
         @apply flex mx-auto flex-wrap gap-x-5 md:gap-x-20 gap-y-10 justify-center items-start
     }
+
+    .input-style {
+        @apply reset-focus btn-padding bg-white placeholder:text-neutral-300 rounded border-[1px] border-[#cccccc] text-left;
+    }
+
 }
 
 @layer utilities {
     .reset-focus {
-        @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-transparent focus-visible:ring-indigo-500 transition;
+        @apply focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 transition;
     }
 
     .btn-padding {
