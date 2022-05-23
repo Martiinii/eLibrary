@@ -9,7 +9,6 @@ import Router from 'next/router'
 
 const SearchContext = createContext();
 
-
 const SearchProvider = ({ children }) => {
     const [searchInput, searchInputValue] = useTextInput({ placeholder: "Wyszukaj książki" });
     const [authorInput, authorInputValue, setAuthorInput] = useTextInput({ placeholder: "Autor" });
@@ -55,8 +54,8 @@ const SearchProvider = ({ children }) => {
                 <Select instanceId="filter-lang" options={options} noOptionsMessage={() => "Nie znaleziono języka"} value={languageValue} onChange={setLanguageValue} />
             </fieldset>
 
-            <button className="reset-focus btn-padding btn-rounded bg-orange-500 hover:bg-orange-600 focus-visible:ring-orange-700 font-bold text-white" type="reset" onClick={resetFilters}>Wyczyść filtry</button>
-            <button className="reset-focus btn-padding btn-rounded bg-green-500 hover:bg-green-600 focus-visible:ring-green-700 font-bold text-white flex gap-2 justify-center items-center" type="submit">
+            <button className="reset-focus btn-padding btn-rounded bg-orange-500 hover:bg-orange-600 focus-visible:ring-orange-700 font-bold text-black/50" type="reset" onClick={resetFilters}>Wyczyść filtry</button>
+            <button className="reset-focus btn-padding btn-rounded bg-green-500 hover:bg-green-600 focus-visible:ring-green-700 font-bold text-black/50 flex gap-2 justify-center items-center" type="submit">
                 Szukaj
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
