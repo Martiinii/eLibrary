@@ -3,7 +3,7 @@ import { useMemo } from "react";
 import { BookProvider } from "./bookContext";
 import BookField from "./BookField";
 import StarButton from "./StarButton";
-import convertCodeToLang from "../shared/languages";
+import { convertCodeToLang } from "../shared/languages";
 import Link from "next/link";
 
 const getImage = resources => {
@@ -36,13 +36,13 @@ const getAuthor = agents => {
 
 
 const Book = ({ id, title, agents, languageCode, resources }) => {
-    const language = useMemo(() => convertCodeToLang(languageCode));
-    const author = useMemo(() => getAuthor(agents));
-    const imgSrc = useMemo(() => getImage(resources));
+    const language = useMemo(() => (languageCode.map(code => convertCodeToLang(code)).filter(e => e != null).join(", ")), [languageCode]);
+    const author = useMemo(() => getAuthor(agents), [agents]);
+    const imgSrc = useMemo(() => getImage(resources), [resources]);
 
     return (
         <BookProvider id={id} title={title} agents={agents} languageCode={languageCode} resources={resources} >
-            <article className="w-min bg-white rounded-xl shadow-md mx-auto mb-auto">
+            <article className="w-min bg-white rounded-xl shadow-md">
                 <header className="relative w-[300px] h-[400px] bg-slate-100 overflow-hidden rounded-xl">
                     <img src={imgSrc} alt="Book cover" className="object-cover h-full w-full object-top brightness-95 origin-top hover:scale-[1.02] transition" />
                     <StarButton />
@@ -59,7 +59,7 @@ const Book = ({ id, title, agents, languageCode, resources }) => {
                     </div>
 
                     <Link href={`/read/${id}`}>
-                        <a className="inline-block reset-focus btn-padding btn-rounded my-5 bg-emerald-300 hover:bg-emerald-400 focus-visible:ring-emerald-700 uppercase font-semibold">
+                        <a className="inline-block reset-focus btn-padding btn-rounded my-5 bg-green-400 hover:bg-green-500 focus-visible:ring-green-600 uppercase font-semibold">
                             Czytaj
                         </a>
                     </Link>
