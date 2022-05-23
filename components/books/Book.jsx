@@ -5,6 +5,7 @@ import BookField from "./BookField";
 import StarButton from "./StarButton";
 import { convertCodeToLang } from "../shared/languages";
 import Link from "next/link";
+import Image from 'next/image'
 
 const getImage = resources => {
     let img = "";
@@ -44,7 +45,7 @@ const Book = ({ id, title, agents, languageCode, resources }) => {
         <BookProvider id={id} title={title} agents={agents} languageCode={languageCode} resources={resources} >
             <article className="w-min bg-white rounded-xl shadow-md">
                 <header className="relative w-[300px] h-[400px] bg-slate-100 overflow-hidden rounded-xl">
-                    <img src={imgSrc} alt="Book cover" className="object-cover h-full w-full object-top brightness-95 origin-top hover:scale-[1.02] transition" />
+                    <Image src={imgSrc} alt="Book cover" className="object-cover h-full w-full object-top brightness-95 origin-top hover:scale-[1.02] transition" layout="fill" />
                     <StarButton />
                 </header>
 
