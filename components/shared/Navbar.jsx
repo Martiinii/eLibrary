@@ -3,14 +3,12 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import Link from "next/link"
 import Router from "next/router"
 import { useState } from "react"
+import { useSearch } from "../../context/searchContext"
 import useTextInput from "./useTextInput"
 
-const navbarLeft = [
+const navbarLinks = [
     { title: "Popularne", href: "/" },
-    { title: "Ulubione książki", href: "/favourite" }
-]
-
-const navbarRight = [
+    { title: "Ulubione książki", href: "/favourite" },
     { title: "O projekcie", href: "/about" },
 ]
 
@@ -26,42 +24,26 @@ const NavbarLink = ({ children, href, onClick }) => {
 
 const Navbar = () => {
     const [mobileMenuVisible, setMobileMenuVisible] = useState(false)
-    const [searchInput, searchInputValue] = useTextInput({ className: "md:text-center border-2 border-indigo-400 focus-visible:border-transparent", placeholder: "Wyszukaj książki" });
-
+    const { searchBox } = useSearch();
     const toggleMenu = (state = null) => setMobileMenuVisible(state ?? !mobileMenuVisible)
-
-    const submitSearch = e => {
-        e.preventDefault();
-        toggleMenu(false);
-        searchInputValue ? Router.push(`/search/${encodeURIComponent(searchInputValue)}`) : Router.push("/");
-    }
 
     return (
         <>
-            <h1 className="hidden md:block bg-white/80 backdrop-blur-sm text-2xl font-bold text-center py-5">E-Biblioteka</h1>
-            <nav className="w-full flex px-5 py-5 bg-white/80 backdrop-blur-sm flex-wrap justify-between items-center sticky top-0 z-50">
-                <h2 className="block md:hidden text-xl font-bold">E-Biblioteka</h2>
-                <button className="md:hidden reset-focus btn-padding btn-rounded" onClick={() => toggleMenu()}>
-                    <FontAwesomeIcon icon={faBars} />
-                </button>
+            <nav className="w-full bg-white/80 backdrop-blur-sm sticky top-0 z-40">
+                <div className="container mx-auto flex flex-wrap px-5 py-5 justify-between items-center gap-3">
+                    <h1 className="text-2xl font-bold">E-Biblioteka</h1>
+                    <button className="md:hidden reset-focus btn-padding btn-rounded" onClick={() => toggleMenu()}>
+                        <FontAwesomeIcon icon={faBars} />
+                    </button>
 
-                <div className={`${!mobileMenuVisible ? "hidden" : "flex"} md:flex flex-col md:flex-row justify-center md:items-center gap-5 p-5 w-full `}>
-                    <section>
-                        <form onSubmit={submitSearch}>
-                            {searchInput}
-                        </form>
-                    </section>
-
-                    <section className="md:flex-1 md:order-first flex gap-5 md:gap-3 flex-col md:flex-row md:flex-wrap md:justify-end">
-                        {navbarLeft.map((link, i) => <NavbarLink href={link.href} key={i} onClick={() => {toggleMenu(false)}}>{link.title}</NavbarLink>)}
-                    </section>
-
-
-                    <section className="md:flex-1 flex gap-5 md:gap-3 flex-col md:flex-row md:flex-wrap">
-                        {navbarRight.map((link, i) => <NavbarLink href={link.href} key={i} onClick={() => {toggleMenu(false)}}>{link.title}</NavbarLink>)}
-                    </section>
+                    <div className={`${!mobileMenuVisible ? "hidden" : "flex"} md:flex flex-col md:flex-row justify-center md:items-center gap-5 w-full md:w-auto`}>
+                        <section className="flex gap-3 flex-col md:flex-row md:flex-wrap md:justify-end">
+                            {navbarLinks.map((link, i) => <NavbarLink href={link.href} key={i} onClick={() => { toggleMenu(false) }}>{link.title}</NavbarLink>)}
+                        </section>
+                    </div>
                 </div>
             </nav>
+            {searchBox}
         </>
     )
 }
