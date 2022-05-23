@@ -43,6 +43,9 @@
         @apply reset-focus btn-padding bg-white placeholder:text-neutral-300 rounded border-[1px] border-[#cccccc] text-left;
     }
 
+    .link {
+        @apply reset-focus btn-rounded text-sky-600 hover:text-sky-700 transition font-semibold;
+    }
 }
 
 @layer utilities {
@@ -51,10 +54,10 @@
     }
 
     .btn-padding {
-        @apply px-3 py-2
+        @apply px-3 py-2;
     }
 
     .btn-rounded {
-        @apply rounded-lg
+        @apply rounded-lg;
     }
 }
