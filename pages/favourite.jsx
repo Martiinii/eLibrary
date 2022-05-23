@@ -1,15 +1,18 @@
 import { useStarred } from "../context/starredContext";
-
+import Meta from "../components/shared/Meta";
 
 const FavouritePage = () => {
     const { fetchedBooks } = useStarred();
 
     return (
-        <div className="book-list">
-            {fetchedBooks.map(saved => {
-                return saved.book;
-            })}
-        </div>
+        <>
+        <Meta title="Ulubione książki" />
+            <div className="book-list">
+                {fetchedBooks.map(saved => {
+                    return saved.book;
+                })}
+            </div>
+        </>
     )
 }
 

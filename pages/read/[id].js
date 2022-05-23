@@ -1,10 +1,12 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import fetcher from "../../components/shared/fetcher";
+import Meta from "../../components/shared/Meta";
 
-const getText = async (id, callback) => {
+const getTextTitle = async (id, callback) => {
     const data = await fetcher(`https://gnikdroy.pythonanywhere.com/api/book/${id}?format=json`)
-    const resources = data.resources ?? [];
+    const resources = data?.resources ?? [];
+    const title = data?.title ?? "";
 
     let uri = ""
 
@@ -19,28 +21,31 @@ const getText = async (id, callback) => {
         }
     }
 
-    if(callback != null) callback(uri);
-    return uri;
+    if (callback != null) callback([uri, title]);
+    return [uri, title];
 }
 
 
 const ReadPage = () => {
     const router = useRouter();
     const { id } = router.query;
-    const [frameSrc, setFrameSrc] = useState("");
+    const [bookData, setBookData] = useState(["", "Wyszukiwanie..."]);
 
     useEffect(() => {
-        if(id) {
-            getText(id, setFrameSrc);
+        if (id) {
+            getTextTitle(id, setBookData);
         }
     }, [id])
 
 
     return (
-        <iframe
-            src={frameSrc}
-            className={`w-full min-h-[600px] md:min-h-[700px] bg-white rounded-lg shadow-lg ${frameSrc ? "" : "bg-slate-300 animate-pulse"}`}
-        />
+        <>
+        <Meta title={bookData[1]} />
+            <iframe
+                src={bookData[0]}
+                className={`w-full min-h-[600px] md:min-h-[700px] bg-white rounded-lg shadow-lg ${bookData[0] ? "" : "bg-slate-300 animate-pulse"}`}
+            />
+        </>
     )
 }
 
