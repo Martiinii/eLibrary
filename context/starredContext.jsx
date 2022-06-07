@@ -15,7 +15,7 @@ const getBook = async (id, callback) => {
             key={data.id}
             id={data.id}
             title={data.title}
-            languageCode={data.languages[0]}
+            languageCode={data.languages}
 
             agents={data.agents}
             resources={data.resources}
