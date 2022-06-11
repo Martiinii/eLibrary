@@ -6,11 +6,16 @@ const FavouritePage = () => {
 
     return (
         <>
-        <Meta title="Ulubione książki" />
+            <Meta title="Ulubione książki" />
             <div className="book-list">
-                {fetchedBooks.map(saved => {
-                    return saved.book;
-                })}
+                {fetchedBooks.length
+                    ?
+                    fetchedBooks.map(saved => {
+                        return saved.book;
+                    })
+                    :
+                    <h2 className="font-semibold text-xl">Brak ulubionych książek</h2>
+                }
             </div>
         </>
     )
