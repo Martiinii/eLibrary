@@ -54,8 +54,8 @@ const SearchProvider = ({ children }) => {
                 <Select instanceId="filter-lang" options={options} noOptionsMessage={() => "Nie znaleziono języka"} value={languageValue} onChange={setLanguageValue} />
             </fieldset>
 
-            <button className="reset-focus btn-padding btn-rounded bg-orange-500 hover:bg-orange-600 focus-visible:ring-orange-700 font-bold text-black/50" type="reset" onClick={resetFilters}>Wyczyść filtry</button>
-            <button className="reset-focus btn-padding btn-rounded bg-green-500 hover:bg-green-600 focus-visible:ring-green-700 font-bold text-black/50 flex gap-2 justify-center items-center" type="submit">
+            <button className="reset-focus btn-padding btn-rounded bg-orange-600 hover:bg-orange-700 focus-visible:ring-orange-800 font-semibold text-neutral-50" type="reset" onClick={resetFilters}>Wyczyść filtry</button>
+            <button className="reset-focus btn-padding btn-rounded bg-green-600 hover:bg-green-700 focus-visible:ring-green-800 font-semibold text-neutral-50 flex gap-2 justify-center items-center" type="submit">
                 Szukaj
                 <FontAwesomeIcon icon={faMagnifyingGlass} />
             </button>
