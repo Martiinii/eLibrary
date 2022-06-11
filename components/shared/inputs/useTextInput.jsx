@@ -1,7 +1,7 @@
 import TextInput from "./TextInput"
 import { useState } from "react"
 
-const useTextInput = ({className = "", placeholder = "", defaultText = "", ...props}) => {
+const useTextInput = ({ className = "", placeholder = "", defaultText = "", ...props }) => {
     const [currentInput, setCurrentInput] = useState(defaultText);
     const element = (
         <TextInput
