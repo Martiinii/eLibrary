@@ -50,20 +50,24 @@ const useGetBooks = (params = "", api = "https://gnikdroy.pythonanywhere.com/api
                                 })}</>
                         }
                     >
-                        {books.map(book => {
-                            return (
-                                <Book
-                                    key={book.id}
-                                    id={book.id}
-                                    title={book.title}
-                                    languageCode={book.languages}
+                        {books.length ?
+                            books.map(book => {
+                                return (
+                                    <Book
+                                        key={book.id}
+                                        id={book.id}
+                                        title={book.title}
+                                        languageCode={book.languages}
 
-                                    agents={book.agents}
-                                    resources={book.resources}
-                                />
-                            )
+                                        agents={book.agents}
+                                        resources={book.resources}
+                                    />
+                                )
 
-                        })}
+                            })
+                            :
+                            <h2 className="font-semibold text-xl">Nic nie znaleziono</h2>
+                        }
                     </InfiniteScroll>
             }
         </>
