@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import useSWR from "swr";
-import Book from "../books/Book";
-import BookSkeleton from "../books/BookSkeleton";
-import fetcher from "../shared/fetcher"
+import Book from "../../books/Book";
+import BookSkeleton from "../../books/BookSkeleton";
+import fetcher from "../utility/fetcher"
 
 const useGetBooks = (params = "", api = "https://gnikdroy.pythonanywhere.com/api/book/?format=json&type=Text&") => {
     const { data: initialLoad, error } = useSWR(api + params, fetcher)

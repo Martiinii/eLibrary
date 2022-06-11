@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import fetcher from "../../components/shared/fetcher";
+import fetcher from "../../components/shared/utility/fetcher";
 import Meta from "../../components/shared/Meta";
 
 const getTextTitle = async (id, callback) => {

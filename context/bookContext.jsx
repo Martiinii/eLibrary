@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import { useStarred } from "../../context/starredContext";
+import { useStarred } from "./starredContext";
 
 const BookContext = createContext()
 

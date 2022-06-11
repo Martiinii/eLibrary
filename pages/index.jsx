@@ -1,4 +1,4 @@
-import useGetBooks from "../components/shared/useGetBooks";
+import useGetBooks from "../components/shared/hooks/useGetBooks";
 import Meta from "../components/shared/Meta";
 
 const Home = () => {

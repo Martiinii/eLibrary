@@ -1,6 +1,6 @@
 import { useRouter } from "next/router";
 import Meta from "../components/shared/Meta";
-import useGetBooks from "../components/shared/useGetBooks"
+import useGetBooks from "../components/shared/hooks/useGetBooks"
 
 const SearchPage = () => {
     const router = useRouter();

@@ -1,8 +1,8 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import Book from "../components/books/Book";
 import BookSkeleton from "../components/books/BookSkeleton";
-import fetcher from "../components/shared/fetcher";
-import useStarredLocalStorage from "../components/shared/useStarredLocalStorage";
+import fetcher from "../components/shared/utility/fetcher";
+import useStarredLocalStorage from "../components/shared/hooks/useStarredLocalStorage";
 
 const StarredContext = createContext()
 

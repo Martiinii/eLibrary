@@ -1,8 +1,7 @@
 import { faStar as emptyStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as wholeStar } from "@fortawesome/free-solid-svg-icons";
-import { faCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { useBook } from "./bookContext";
+import { useBook } from "../../context/bookContext";
 
 const StarButton = () => {
     const { starredState, setStarred } = useBook();

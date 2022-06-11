@@ -1,11 +1,11 @@
 import { faLanguage, faUser } from "@fortawesome/free-solid-svg-icons";
 import { useMemo } from "react";
-import { BookProvider } from "./bookContext";
 import BookField from "./BookField";
 import StarButton from "./StarButton";
-import { convertCodeToLang } from "../shared/languages";
+import { convertCodeToLang } from "../shared/utility/languages";
 import Link from "next/link";
 import Image from 'next/image'
+import { BookProvider } from "../../context/bookContext";
 
 const getImage = resources => {
     let img = "";

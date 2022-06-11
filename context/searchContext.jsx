@@ -1,9 +1,9 @@
 import { faFilter, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { createContext, useContext, useMemo, useState } from "react"
-import useModal from "../components/shared/useModal";
+import useModal from "../components/shared/hooks/useModal";
 import useTextInput from "../components/shared/inputs/useTextInput";
-import { getLanguageList } from "../components/shared/languages";
+import { getLanguageList } from "../components/shared/utility/languages";
 import Select from "react-select";
 import Router from 'next/router'
 
