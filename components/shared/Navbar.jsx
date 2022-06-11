@@ -27,7 +27,7 @@ const Navbar = () => {
         <>
             <nav className="w-full bg-white/80 backdrop-blur-xl sticky top-0 z-40">
                 <div className="container mx-auto flex flex-wrap px-5 py-5 justify-between items-center gap-3">
-                    <h1 className="text-2xl font-bold"><Link href="/"><a>E-Biblioteka</a></Link></h1>
+                    <h1 className="text-2xl font-bold"><Link href="/"><a className="reset-focus btn-padding btn-rounded">E-Biblioteka</a></Link></h1>
                     <button className="md:hidden reset-focus btn-padding btn-rounded" onClick={() => toggleMenu()}>
                         <FontAwesomeIcon icon={faBars} />
                     </button>
