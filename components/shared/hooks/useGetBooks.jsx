@@ -5,7 +5,7 @@ import Book from "../../books/Book";
 import BookSkeleton from "../../books/BookSkeleton";
 import fetcher from "../utility/fetcher"
 
-const useGetBooks = (params = "", api = "https://gnikdroy.pythonanywhere.com/api/book/?format=json&type=Text&") => {
+const useGetBooks = (params = "", api = "https://gnikdroy.pythonanywhere.com/api/book/?format=json&") => {
     const { data: initialLoad, error } = useSWR(api + params, fetcher)
     const [nextFetch, setNextFetch] = useState(initialLoad?.next)
 
