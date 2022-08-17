@@ -45,7 +45,13 @@ const Book = ({ id, title, agents, languageCode, resources }) => {
         <BookProvider id={id} title={title} agents={agents} languageCode={languageCode} resources={resources} >
             <article className="w-min bg-white rounded-xl shadow-md">
                 <header className="relative w-[300px] h-[400px] bg-slate-100 overflow-hidden rounded-xl">
-                    <Image src={imgSrc} alt="Book cover" className="object-cover h-full w-full object-top brightness-95 origin-top hover:scale-[1.02] transition" layout="fill" />
+                    {imgSrc ? (
+                        <Image src={imgSrc} alt="Book cover" className="object-cover h-full w-full object-top brightness-95 origin-top hover:scale-[1.02] transition" layout="fill" />
+                    ) : (
+                        <div className="flex justify-center w-full h-full items-center">
+                            Brak obrazku
+                        </div>
+                    )}
                     <StarButton />
                 </header>
 
